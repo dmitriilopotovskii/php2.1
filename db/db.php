@@ -1,5 +1,4 @@
 <?php
-
 class db
 {
     private $host, $username, $password;
@@ -15,17 +14,23 @@ class db
     {
         mysql_connect($this->host, $this->username, $this->password)
         || die('problema s podklucheniem');
-        echo 'successfully connected to database';
     }
 
     public function selectDb($database)
     {
         mysql_select_db($database)
         || die('net takoi bazi');
-        echo 'successfully selected database';
     }
+    public function query($sql)
+    {
+        mysql_query($sql)
+        || die('nevernii zapros');
 
-
+    }
 }
-$a = new db('localhost','root','')
+$a = new db('localhost','root','');
+$a->connectDb();
+$a->selectDb('lesson');
+$a->query('SELECT * FROM `lessons2`');
+var_dump($a);
 ?>
