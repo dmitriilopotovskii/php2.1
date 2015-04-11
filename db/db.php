@@ -1,36 +1,40 @@
 <?php
+
 class db
 {
-    private $host, $username, $password;
+    private $host, $username, $password, $database;
 
-    public function __construct($host, $user, $pass)
+    public function __construct($host, $username, $password, $database)
     {
         $this->host = $host;
-        $this->username = $user;
-        $this->password = $pass;
-    }
-
-    public function connectDb()
-    {
-        mysql_connect($this->host, $this->username, $this->password)
+        $this->username = $username;
+        $this->password = $password;
+        $this->database = $database;
+        mysql_connect($host, $username, $password)
         || die('problema s podklucheniem');
-    }
-
-    public function selectDb($database)
-    {
         mysql_select_db($database)
         || die('net takoi bazi');
     }
+
+
     public function query($sql)
     {
         mysql_query($sql)
         || die('nevernii zapros');
 
     }
+    public function allDataQueryFromTable($table )
+    {
+        $sql = 'SELECT * FROM `'."$table".'` ORDER BY date DESC';
+        $res = mysql_query($sql);
+        $ret = [];
+        while (false !== ($row = mysql_fetch_array($res)))
+        {
+            $ret[] = $row;
+        }
+        return $ret;
+    }
 }
-$a = new db('localhost','root','');
-$a->connectDb();
-$a->selectDb('lesson');
-$a->query('SELECT * FROM `lessons2`');
-var_dump($a);
+
+
 ?>

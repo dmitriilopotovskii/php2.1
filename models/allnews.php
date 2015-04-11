@@ -1,11 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: dmitry
- * Date: 11.04.2015
- * Time: 19:21
- */
+require __DIR__.'/../db/db.php' ;
+$connect = new db('localhost','root','','lesson');
 
-class allnews {
-
-}
+?>
