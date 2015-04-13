@@ -22,7 +22,7 @@
         || die('nevernii zapros');
 
     }
-    public function allDataQueryArray($sql)
+    public function QueryArray($sql)
     {
         $res = mysql_query($sql);
         $ret = [];
