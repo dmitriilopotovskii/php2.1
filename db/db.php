@@ -1,6 +1,5 @@
 <?php
-
-class db
+ class db
 {
     private $host, $username, $password, $database;
 
@@ -23,9 +22,8 @@ class db
         || die('nevernii zapros');
 
     }
-    public function allDataQueryFromTable($table )
+    public function allDataQueryArray($sql)
     {
-        $sql = 'SELECT * FROM `'."$table".'` ORDER BY date DESC';
         $res = mysql_query($sql);
         $ret = [];
         while (false !== ($row = mysql_fetch_array($res)))
@@ -34,6 +32,7 @@ class db
         }
         return $ret;
     }
+
 }
 
 
