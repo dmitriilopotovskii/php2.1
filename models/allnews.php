@@ -1,3 +1,4 @@
 <?php
-require __DIR__.'/../news/news.php';
+require __DIR__ . '/../news/newsQuery.php';
+
 ?>
