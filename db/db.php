@@ -1,39 +1,42 @@
 <?php
- class db
+
+class db
 {
-    private $host, $username, $password, $database;
 
-    public function __construct($host, $username, $password, $database)
+    public function __construct()
     {
-        $this->host = $host;
-        $this->username = $username;
-        $this->password = $password;
-        $this->database = $database;
-        mysql_connect($host, $username, $password)
+
+        $config = include __DIR__ . '/../config/db.php';
+        mysql_connect($config['host'], $config['user'], $config['password'])
         || die('problema s podklucheniem');
-        mysql_select_db($database)
+        mysql_select_db($config['dbname'])
         || die('net takoi bazi');
+
+
     }
-
-
     public function query($sql)
     {
         mysql_query($sql)
         || die('nevernii zapros');
 
     }
-    public function QueryArray($sql)
+
+    public function QueryObject($sql)
     {
         $res = mysql_query($sql);
+        if (false === $res) {
+            return false;
+        }
         $ret = [];
-        while (false !== ($row = mysql_fetch_array($res)))
-        {
+        while ($row = mysql_fetch_object($res)) {
             $ret[] = $row;
         }
         return $ret;
+
     }
 
+    public function QueryObjectOne($sql)
+    {
+        return $this->QueryObject($sql)[0];
+    }
 }
-
-
-?>

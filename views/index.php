@@ -27,16 +27,16 @@
         <div class="col-lg-12">
             <h1 class="page-header"></h1>
         </div>
-        <?php foreach ($allNews as $article) : ?>
+        <?php foreach ($allNews as $item) : ?>
         <div class="col-lg-12 col-md-12 col-xs-12 thumb">
-            <h3 class="text-center"><?php echo $article['title']; ?></h3>
+            <h3 class="text-center"><?php echo $item->title; ?></h3>
 
-            <a  class="col-lg-4 thumbnail" href="./article.php?id=<?php echo $article['id']; ?>">
-                <img class="img-responsive" src="<?php echo $article['img']; ?>" alt="">
+            <a  class="col-lg-4 thumbnail" href="./article.php?id=<?php echo $item->id; ?>">
+                <img class="img-responsive" src="<?php echo $item->img; ?>" alt="">
             </a>
 
             <div class="col-lg-8 text-left">
-                <?php echo $article['text']; ?>
+                <?php echo $item->text; ?>
             </div>
         </div>
 

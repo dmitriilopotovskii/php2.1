@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/models/allnews.php';
-$news  = new newsQuery();
-$oneNews = $news->oneNews();
+require __DIR__ . '/models/NewsArticle.php';
+$news  = new NewsArticle();
+$oneNews = $news->oneNews($_GET['id']);
 require __DIR__ . '/views/article.php';
 ?>
