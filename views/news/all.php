@@ -31,7 +31,7 @@
         <div class="col-lg-12 col-md-12 col-xs-12 thumb">
             <h3 class="text-center"><?php echo $item->title; ?></h3>
 
-            <a  class="col-lg-4 thumbnail" href="./article.php?id=<?php echo $item->id; ?>">
+            <a  class="col-lg-4 thumbnail" href="article.php?id=<?php echo $item->id; ?>">
                 <img class="img-responsive" src="<?php echo $item->img; ?>" alt="">
             </a>
 
