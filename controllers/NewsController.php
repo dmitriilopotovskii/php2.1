@@ -23,8 +23,8 @@ class NewsController
 
     public function  actionOne()
     {
-        $OneNews = new NewsArticle();
-        $this->view->oneNews = $OneNews->oneNews($_GET['id']);
+        $OneArticle = new NewsArticle();
+        $this->view->oneNews = $OneArticle->oneNews($_GET['id']);
         echo $this->view->render('article');
 
     }
