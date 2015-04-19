@@ -9,7 +9,7 @@ class NewsArticle
         return 'lessons2';
     }
 
-    protected function GetFilePath()
+    protected function GetFileUrlDb()
     {
         return '/views/img/';
     }

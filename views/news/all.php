@@ -26,30 +26,28 @@
 
         <div class="col-lg-12">
             <h1 class="page-header"></h1>
+            <?php require __DIR__ . '/form.php'; ?>
         </div>
         <?php foreach ($allNews as $item) : ?>
-        <div class="col-lg-12 col-md-12 col-xs-12 thumb">
-            <h3 class="text-center"><?php echo $item->title; ?></h3>
-            <a  class="col-lg-4 thumbnail" href="index.php?method=one&id=<?php echo $item->id; ?>">
-                <img class="img-responsive" src="<?php echo $item->img; ?>" alt="">
-            </a>
+            <div class="col-lg-12 col-md-12 col-xs-12 thumb">
+                <h3 class="text-center"><?php echo $item->title; ?></h3>
+                <a class="col-lg-4 thumbnail" href="index.php?method=one&id=<?php echo $item->id; ?>">
+                    <img class="img-responsive" src="<?php echo $item->img; ?>" alt="">
+                </a>
 
-            <div class="col-lg-8 text-left">
-                <?php echo $item->text; ?>
+                <div class="col-lg-8 text-left">
+                    <?php echo $item->text; ?>
+                </div>
             </div>
-        </div>
 
-    <?php endforeach; ?>
+        <?php endforeach; ?>
     </div>
 
     <hr>
 
     <!-- Footer -->
     <footer>
-        <div class="row">
-        <a href="addarticle.php">dobavit novost</a>
-
-        </div>
+        <div class="row"></div>
     </footer>
 
 </div>

@@ -12,6 +12,6 @@ class AdminController
     public function imgAdd()
     {
         $AddImg = new NewsArticle();
-        $AddImg->uploadImg(DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR);
+        $AddImg->uploadImg( __DIR__.'/../views/img/');
     }
 }
