@@ -1,5 +1,4 @@
 <?php
-require __DIR__ . './AbstractController.php';
 require __DIR__ . '/../models/NewsArticle.php';
 require __DIR__.'/../classes/view.php';
 
