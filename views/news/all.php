@@ -26,7 +26,7 @@
 
         <div class="col-lg-12">
             <h1 class="page-header"></h1>
-            <?php require __DIR__ . '/form.php'; ?>
+            <?php require __DIR__ . '/AddForm.php'; ?>
         </div>
         <?php foreach ($allNews as $item) : ?>
             <div class="col-lg-12 col-md-12 col-xs-12 thumb">
