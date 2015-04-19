@@ -31,7 +31,7 @@
             <div class="col-lg-12">
                 <h1 class="page-header"></h1>
 
-                <form class="form-inline" enctype="multipart/form-data" action="../addarticlePost.php" method="POST"
+                <form class="form-inline" enctype="multipart/form-data" action="/index.php?admin" method="POST"
                       style="margin-left: 50%;">
 
                     <input type="file" name="userfile" class="btn btn-primary "/>
