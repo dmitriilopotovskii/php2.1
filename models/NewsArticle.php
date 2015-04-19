@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . './Article.php';
+require __DIR__ . '/Article.php';
 
 class NewsArticle
     extends Article
@@ -15,5 +15,3 @@ class NewsArticle
     }
 }
 
-//$add= new NewsArticle();
-//$add->addNews('privet','kakdela','7429cdcs-960.jpg');

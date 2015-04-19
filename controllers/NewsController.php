@@ -7,7 +7,7 @@ class NewsController
 {
     protected function GetTemplatePatch()
     {
-        return '/../views/news/';
+        return __DIR__.'/../views/news';
 
     }
 

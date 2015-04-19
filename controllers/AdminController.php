@@ -4,11 +4,10 @@ require __DIR__ . '/../models/NewsArticle.php';
 
 class AdminController
 {
-    public function actionAdd()
+    public function NewsAdd()
     {
         $AddNews = new NewsArticle();
         $AddNews->addNews($_POST['title'],$_POST['text'],$_FILES['userfile']['name']);
-        //header("Location: /");
     }
     public function imgAdd()
     {

@@ -1,7 +1,7 @@
 <?php
 return [
     'host' => 'localhost',
-    'user' => 'root',
-    'password' => '',
+    'user' => 'homestead',
+    'password' => 'secret',
     'dbname' => 'lesson'
 ];
