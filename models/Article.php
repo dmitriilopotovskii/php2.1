@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../db/db.php';
+require __DIR__ . '/../classes/db.php';
 
 abstract class Article
 {

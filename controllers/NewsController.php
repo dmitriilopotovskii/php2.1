@@ -1,33 +1,35 @@
 <?php
 require __DIR__ . './AbstractController.php';
 require __DIR__ . '/../models/NewsArticle.php';
+require __DIR__.'/../classes/view.php';
 
 class NewsController
-    extends AbstractController
 {
-    protected function GetTemplatePatch()
-    {
-        return __DIR__.'/../views/news';
+    protected $view;
 
+    public function __construct()
+    {
+        $this->view = new View(__DIR__ . '/../views/news/');
     }
 
 
     public function actionAll()
     {
         $News = new NewsArticle();
-        $allNews = $News->allNews();
-        $this->render('all', ['allNews' => $allNews]);
+        $this->view->allNews = $News->allNews();
+        echo $this->view->render('all');
+
+
     }
 
     public function  actionOne()
     {
         $OneNews = new NewsArticle();
-        $oneNews = $OneNews->oneNews($_GET['id']);
-        $this->render('article', ['oneNews' => $oneNews]);
+        $this->view->oneNews = $OneNews->oneNews($_GET['id']);
+        echo $this->view->render('article');
 
     }
 
 
 }
-
 
