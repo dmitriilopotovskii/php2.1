@@ -16,7 +16,7 @@ class NewsController
     {
         $News = new NewsArticle();
         $this->view->allNews = $News->allNews();
-        echo $this->view->render('all');
+        return $this->view->render('all');
 
 
     }
@@ -25,7 +25,7 @@ class NewsController
     {
         $OneArticle = new NewsArticle();
         $this->view->oneNews = $OneArticle->oneNews($_GET['id']);
-        echo $this->view->render('article');
+        return $this->view->render('article');
 
     }
 
