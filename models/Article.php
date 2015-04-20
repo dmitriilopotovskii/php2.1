@@ -6,7 +6,7 @@ abstract class Article
 {
     public function __construct()
     {
-        $this->News = new db();
+        $this->db = new db();
     }
 
     abstract protected function getTable();
@@ -16,21 +16,21 @@ abstract class Article
 
     public function allNews()
     {
-        $ret = $this->News->QueryObject('SELECT * FROM `' . $this->getTable() . '`ORDER BY date DESC');
+        $ret = $this->db->QueryObject('SELECT * FROM `' . $this->getTable() . '`ORDER BY date DESC');
         return $ret;
 
     }
 
-    public function oneNews($id)
+    public function oneArticle($id)
     {
-        $ret = $this->News->QueryObjectOne('SELECT * FROM ' . $this->getTable() . ' WHERE id=' . $id);
+        $ret = $this->db->QueryObjectOne('SELECT * FROM ' . $this->getTable() . ' WHERE id=' . $id);
         return $ret;
 
     }
 
     public function addNews($title, $text, $files)
     {
-        $this->News->query("INSERT INTO `" . $this->getTable() . "`(`id`, `title`, `text`, `img`, `date`) VALUES (NULL,'" . $title . "','" . $text . "','" . $this->GetFileUrlDb() . $files . "', CURRENT_TIMESTAMP)");
+        $this->db->query("INSERT INTO `" . $this->getTable() . "`(`id`, `title`, `text`, `img`, `date`) VALUES (NULL,'" . $title . "','" . $text . "','" . $this->GetFileUrlDb() . $files . "', CURRENT_TIMESTAMP)");
     }
 
     public function uploadImg($uploaddir)

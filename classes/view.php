@@ -24,6 +24,7 @@ class View
 
     public function display($template)
     {
+
         foreach ($this->data as $k => $v) {
             $$k = $v;
         }
