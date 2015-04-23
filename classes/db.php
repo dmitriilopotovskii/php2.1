@@ -2,41 +2,36 @@
 
 class db
 {
+    protected $dbh;
 
     public function __construct()
     {
-
         $config = include __DIR__ . '/../config/db.php';
-        mysql_connect($config['host'], $config['user'], $config['password'])
-        || die('problema s podklucheniem');
-        mysql_select_db($config['dbname'])
-        || die('net takoi bazi');
-
+        $dsn = 'mysql:dbname=' . $config['dbname'] . ';host=' . $config['host'];
+        $this->dbh = new PDO($dsn, $config['user'], $config['password']);
 
     }
-    public function query($sql)
+
+    public function findAll($class, $sql, $params = [])
     {
-        mysql_query($sql)
-        || die('nevernii zapros');
+        $sth = $this->dbh->prepare($sql);
+        $sth->execute($params);
+        $res = $sth->fetchAll(PDO::FETCH_CLASS, $class);
+        return $res;
 
     }
 
-    public function QueryObject($sql)
+    public function findOne($class, $sql, $params = [])
     {
-        $res = mysql_query($sql);
-        if (false === $res) {
-            return false;
-        }
-        $ret = [];
-        while ($row = mysql_fetch_object($res)) {
-            $ret[] = $row;
-        }
-        return $ret;
-
+        return $this->findAll($class, $sql, $params)[0];
     }
 
-    public function QueryObjectOne($sql)
+    public function prepare($sql, $params = [])
     {
-        return $this->QueryObject($sql)[0];
+        $sth = $this->dbh->prepare($sql);
+        $sth->execute($params);
+        return $this->dbh->lastInsertId();
     }
+
 }
+

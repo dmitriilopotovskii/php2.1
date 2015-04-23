@@ -14,8 +14,7 @@ class NewsController
 
     public function actionAll()
     {
-        $News = new NewsArticle();
-        $this->view->allNews = $News->allNews();
+        $this->view->allNews = NewsArticle::findAll();
         $this->view->display('all');
 
 
@@ -23,8 +22,7 @@ class NewsController
 
     public function  actionOne()
     {
-        $OneArticle = new NewsArticle();
-        $this->view->oneNews = $OneArticle->oneArticle($_GET['id']);
+        $this->view->oneNews = NewsArticle::findOne($_GET['id']);
         $this->view->display('article');
 
     }

@@ -1,5 +1,25 @@
 <?php
-if (isset($_GET['admin'])) {
+
+require __DIR__ . '/models/NewsArticle.php';
+
+
+
+$NewsArticle = new NewsArticle;
+//$NewsArticle->title = 'NExer';
+//$NewsArticle->text = 'pobeda';
+//$NewsArticle->NewsUpdate(51);
+$NewsArticle->Delete(51);
+
+
+
+
+//$AddNews->title = 'pepiska3';
+//$AddNews->text = 'text1';
+//$AddNews->fileName = 'peizash4444';
+//$AddNews->NewsAdd();
+//echo $AddNews->id;
+
+/*if (isset($_GET['admin'])) {
     require __DIR__ . '/controllers/AdminController.php';
     $news = new AdminController;
     $news->NewsAdd();
@@ -14,4 +34,4 @@ if (isset($_GET['admin'])) {
     $methodName = 'Action' . ucfirst($method);
     $controller = new $ctrlClassName;
     $controller->$methodName();
-}
+}*/

@@ -14,4 +14,10 @@ class AdminController
         $AddImg = new NewsArticle();
         $AddImg->uploadImg( __DIR__.'/../views/img/');
     }
+    public function insertNews()
+    {
+        $AddNews = new NewsArticle();
+        $AddNews->NewsAdd($_POST['title'],$_POST['text'],$_FILES['userfile']['name']);
+    }
+
 }
