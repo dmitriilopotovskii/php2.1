@@ -1,4 +1,4 @@
-<form class="form-inline" enctype="multipart/form-data" action="/index.php?admin" method="POST"
+<form class="form-inline" enctype="multipart/form-data" action="/index.php?admin=add" method="POST"
       style="margin-left: 50%;">
 
     <input type="file" name="userfile" class="btn btn-primary "/>
