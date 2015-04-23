@@ -1,30 +1,29 @@
 <?php
 
-require __DIR__ . '/models/NewsArticle.php';
 
-
-
-$NewsArticle = new NewsArticle;
-//$NewsArticle->title = 'NExer';
-//$NewsArticle->text = 'pobeda';
-//$NewsArticle->NewsUpdate(51);
-$NewsArticle->Delete(51);
-
-
-
-
-//$AddNews->title = '';
-//$AddNews->text = 'text1';
-//$AddNews->fileName = '';
-//$AddNews->NewsAdd();
-//echo $AddNews->id;
-
-/*if (isset($_GET['admin'])) {
+if (isset($_GET['admin']))
+{
     require __DIR__ . '/controllers/AdminController.php';
-    $news = new AdminController;
-    $news->NewsAdd();
-    $news->imgAdd();
-    header("Location: /");
+    if ($_GET['admin'] == 'add')
+    {
+        $news = new NewsArticle;
+        $news->id = $_POST['id'];
+        $news->title = $_POST['title'];
+        $news->text = $_POST['text'];
+        $news->fileName = $_FILES['userfile']['name'];
+        $news->uploadImg(__DIR__.'/views/img/');
+        $news->save();
+        header("Location: /");
+    }
+    if ($_GET['admin'] == 'del')
+    {
+        $news = new NewsArticle;
+        $news->id = $_POST['id'];
+        $news->Delete();
+        header("Location: /");
+    }
+
+
 } else {
     $ctrl = !empty($_GET['class']) ? $_GET['class'] : 'news';
     $ctrlClassName = ucfirst($ctrl) . 'Controller';
@@ -34,4 +33,5 @@ $NewsArticle->Delete(51);
     $methodName = 'Action' . ucfirst($method);
     $controller = new $ctrlClassName;
     $controller->$methodName();
-}*/
+}
+
