@@ -7,17 +7,31 @@ class AdminController
     public function NewsAdd()
     {
         $AddNews = new NewsArticle();
-        $AddNews->addNews($_POST['title'],$_POST['text'],$_FILES['userfile']['name']);
+        $AddNews->title = $_GET['title'];
+        $AddNews->text = $_GET['text'];
+        $AddNews->fileName = $_FILES['userfile']['name'];
+        $AddNews->NewsAdd();
     }
+
     public function imgAdd()
     {
         $AddImg = new NewsArticle();
         $AddImg->uploadImg( __DIR__.'/../views/img/');
     }
-    public function insertNews()
+
+    public function UpdateNews()
     {
-        $AddNews = new NewsArticle();
-        $AddNews->NewsAdd($_POST['title'],$_POST['text'],$_FILES['userfile']['name']);
+        $NewsArticle = new NewsArticle;
+        $NewsArticle->title = $_GET['title'];
+        $NewsArticle->text = $_GET['text'];
+        $NewsArticle->NewsUpdate($_GET['id']);
+
+    }
+
+    public function deleteNews()
+    {
+        $NewsArticle = new NewsArticle;
+        $NewsArticle->Delete($_GET['id']);
     }
 
 }
