@@ -13,9 +13,9 @@ $NewsArticle->Delete(51);
 
 
 
-//$AddNews->title = 'pepiska3';
+//$AddNews->title = '';
 //$AddNews->text = 'text1';
-//$AddNews->fileName = 'peizash4444';
+//$AddNews->fileName = '';
 //$AddNews->NewsAdd();
 //echo $AddNews->id;
 
