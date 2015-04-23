@@ -8,20 +8,6 @@ abstract class Model
     protected static $table;
     public $title, $text, $id, $fileName;
 
-    public function title()
-    {
-        return $this->title;
-    }
-
-    public function text()
-    {
-        return $this->text;
-    }
-
-    public function fileName()
-    {
-        return $this->fileName;
-    }
 
     public static function getTable()
     {
@@ -51,7 +37,7 @@ abstract class Model
     {
         $title = $this->title;
         $text = $this->text;
-        $sql = 'INSERT INTO ' . static::getTable() . ' ( id, title, TEXT, img, DATE) VALUES (NULL, :title , :TEXT , :imgUrl , CURRENT_TIMESTAMP )';
+        $sql = 'INSERT INTO ' . static::getTable() . ' ( id, title, text, img, date) VALUES (NULL, :title , :text , :imgUrl , CURRENT_TIMESTAMP )';
         $imgUrl = $this->DbImgDir() . $this->fileName;
         $pdo = new db();
         $this->id = $pdo->prepare($sql, [':title' => $title, ':text' => $text, ':imgUrl' => $imgUrl]);
@@ -68,8 +54,9 @@ abstract class Model
         $pdo->prepare($sql, [':title' => $title, ':text' => $text, ':id' => $id]);
     }
 
-    public function Delete($id)
+    public function Delete()
     {
+        $id= $this->id;
         $sql = 'DELETE FROM ' . static::getTable() . ' WHERE id=:id';
         var_dump($sql);
         $pdo = new db();
@@ -88,6 +75,17 @@ abstract class Model
 
 
     }
+
+    public function save()
+    {
+        if (null != $this->id) {
+            $this->NewsUpdate($this->id);
+        } else {
+            $this->NewsAdd();
+        }
+    }
+
+
 }
 
 
