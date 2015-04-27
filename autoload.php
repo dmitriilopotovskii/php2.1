@@ -16,5 +16,6 @@ function __autoload($class)
         }
     }
 
-    return false;
+
+     throw new E404Exception('oshibka zagruzki klassa');
 }

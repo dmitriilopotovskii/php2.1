@@ -3,16 +3,17 @@
 class Login
 {
     protected static $table = 'users';
-    private $username,$password,$role;
-    public $id;
+    protected $username, $password;
+    public $id, $role;
 
-    public function GetLogin()
-    {   $class = static::class;
-        $this->username = $_POST['username'];
-        $this->password = $_POST['password'];
+    public static function GetLogin()
+    {
+        $class = static::class;
+        $username = $_POST['username'];
+        $password = $_POST['password'];
         $sql = 'SELECT * FROM ' . static::getTable() . ' WHERE username=:username AND password=:password';
         $pdo = new db();
-        $res = $pdo->findOne($class,$sql, [':username' =>  $this->username, ':password' => $this->password]);
+        $res = $pdo->findOne($class, $sql, [':username' => $username, ':password' => $password]);
         if ($res) {
             return $res;
         } else {
@@ -21,9 +22,10 @@ class Login
 
     }
 
-    public function GetRole()
+    public static function getTable()
     {
-      $role = $this->GetLogin();
-        $this->role = $role['role'];
+        return static::$table;
     }
+
+   
 }

@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../models/NewsArticle.php';
+//require __DIR__ . '/../models/NewsArticle.php';
 
 
 class AdminController

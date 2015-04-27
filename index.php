@@ -1,18 +1,23 @@
 <?php
-
+session_start();
 require __DIR__ . '/autoload.php';
 
 if (isset($_GET['admin'])) {
-    if ($_GET['admin'] == 'add') {
-        $News = new AdminController;
-        $News->NewsAdd();
-    }
-    if ($_GET['admin'] == 'del') {
-        $News = new AdminController;
-        $News->DeleteNews();
-    }
+    try {
+        if ($_GET['admin'] == 'add' & $_SESSION['role'] == 'admin') {
+            $News = new AdminController;
+            $News->NewsAdd();
+        }
 
 
+        if ($_GET['admin'] == 'del' & $_SESSION['role'] == 'admin') {
+            $News = new AdminController;
+            $News->DeleteNews();
+        }
+    } catch (E403Exception $e) {
+
+        require __DIR__ . '/views/403.php';
+    }
 } else {
     try {
         $ctrl = !empty($_GET['class']) ? $_GET['class'] : 'news';

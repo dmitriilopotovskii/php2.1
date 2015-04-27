@@ -14,11 +14,8 @@ class NewsController
 
     public function actionAll()
     {
-
         $this->view->allNews = NewsArticle::findAll();
         $this->view->display('all');
-
-
     }
 
     public function  actionOne()
