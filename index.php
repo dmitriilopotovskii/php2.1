@@ -4,12 +4,12 @@ require __DIR__ . '/autoload.php';
 
 if (isset($_GET['admin'])) {
     if ($_GET['admin'] == 'add') {
-        $Add = new AdminController;
-        $Add->NewsAdd();
+        $News = new AdminController;
+        $News->NewsAdd();
     }
     if ($_GET['admin'] == 'del') {
-        $news = new AdminController;
-        $news->DeleteNews();
+        $News = new AdminController;
+        $News->DeleteNews();
     }
 
 
@@ -22,6 +22,7 @@ if (isset($_GET['admin'])) {
         $controller = new $ctrlClassName;
         $controller->$methodName();
     } catch (E404Exception $e) {
+
         require __DIR__ . '/views/404.php';
     }
 }
