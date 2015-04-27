@@ -1,37 +1,28 @@
 <?php
 
+require __DIR__ . '/autoload.php';
 
-if (isset($_GET['admin']))
-{
-    require __DIR__ . '/controllers/AdminController.php';
-    if ($_GET['admin'] == 'add')
-    {
-        $news = new NewsArticle;
-        $news->id = $_POST['id'];
-        $news->title = $_POST['title'];
-        $news->text = $_POST['text'];
-        $news->fileName = $_FILES['userfile']['name'];
-        $news->uploadImg(__DIR__.'/views/img/');
-        $news->save();
-        header("Location: /");
+if (isset($_GET['admin'])) {
+    if ($_GET['admin'] == 'add') {
+        $Add = new AdminController;
+        $Add->NewsAdd();
     }
-    if ($_GET['admin'] == 'del')
-    {
-        $news = new NewsArticle;
-        $news->id = $_POST['id'];
-        $news->Delete();
-        header("Location: /");
+    if ($_GET['admin'] == 'del') {
+        $news = new AdminController;
+        $news->DeleteNews();
     }
 
 
 } else {
-    $ctrl = !empty($_GET['class']) ? $_GET['class'] : 'news';
-    $ctrlClassName = ucfirst($ctrl) . 'Controller';
-    require_once __DIR__ . '/controllers/' . $ctrlClassName . '.php';
-
-    $method = !empty($_GET['method']) ? $_GET['method'] : 'all';
-    $methodName = 'Action' . ucfirst($method);
-    $controller = new $ctrlClassName;
-    $controller->$methodName();
+    try {
+        $ctrl = !empty($_GET['class']) ? $_GET['class'] : 'news';
+        $ctrlClassName = ucfirst($ctrl) . 'Controller';
+        $method = !empty($_GET['method']) ? $_GET['method'] : 'all';
+        $methodName = 'Action' . ucfirst($method);
+        $controller = new $ctrlClassName;
+        $controller->$methodName();
+    } catch (E404Exception $e) {
+        require __DIR__ . '/views/404.php';
+    }
 }
 

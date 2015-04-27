@@ -26,13 +26,16 @@ class db
         return $this->findAll($class, $sql, $params)[0];
     }
 
-    public function prepare($sql, $params = [])
+    public function execute($sql, $params = [])
     {
         $sth = $this->dbh->prepare($sql);
-        $sth->execute($params);
-        return $this->dbh->lastInsertId();
+        return $sth->execute($params);
     }
 
+    public function getId()
+    {
+        return $this->dbh->lastInsertId();
+    }
 
 }
 

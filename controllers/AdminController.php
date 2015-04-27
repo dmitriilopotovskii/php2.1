@@ -6,32 +6,33 @@ class AdminController
 {
     public function NewsAdd()
     {
-        $AddNews = new NewsArticle();
-        $AddNews->title = $_GET['title'];
-        $AddNews->text = $_GET['text'];
-        $AddNews->fileName = $_FILES['userfile']['name'];
-        $AddNews->NewsAdd();
+        $news = new NewsArticle();
+        $news->title = $_POST['title'];
+        $news->text = $_POST['text'];
+        $news->uploadImg();
+        $news->insert();
+        header("Location: /");
     }
 
-    public function imgAdd()
-    {
-        $AddImg = new NewsArticle();
-        $AddImg->uploadImg( __DIR__.'/../views/img/');
-    }
+
 
     public function UpdateNews()
     {
-        $NewsArticle = new NewsArticle;
-        $NewsArticle->title = $_GET['title'];
-        $NewsArticle->text = $_GET['text'];
-        $NewsArticle->NewsUpdate($_GET['id']);
+        $article = NewsArticle::findOne($_POST['id']);
+        $article->title = $_POST['title'];
+        $article->text = $_POST['text'];
+        $article->update();
+        header("Location: /");
+
 
     }
 
-    public function deleteNews()
+    public function DeleteNews()
     {
-        $NewsArticle = new NewsArticle;
-        $NewsArticle->Delete($_GET['id']);
+        $article = NewsArticle::findOne($_GET['id']);
+        $article->Delete();
+        header("Location: /");
+
     }
 
 }

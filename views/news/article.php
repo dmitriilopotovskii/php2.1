@@ -29,14 +29,14 @@
         </div>
 
         <div class="col-lg-12 col-md-12 col-xs-12 thumb">
-            <h3 class="text-center"><?php echo $oneNews->title; ?></h3>
+            <h3 class="text-center"><?php echo $Article->title; ?></h3>
 
             <a class="col-lg-8 thumbnail" href="/">
-                <img class="img-responsive" src="<?php echo $oneNews->img; ?>" alt="">
+                <img class="img-responsive" src="<?php echo $Article->img; ?>" alt="">
             </a>
 
             <div class="col-lg-8 text-left">
-                <?php echo $oneNews->text; ?>
+                <?php echo $Article->text; ?>
             </div>
         </div>
 

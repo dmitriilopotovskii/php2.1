@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/../models/NewsArticle.php';
-require __DIR__.'/../classes/view.php';
+//require __DIR__ . '/../models/NewsArticle.php';
+//require __DIR__.'/../classes/view.php';
 
 class NewsController
 {
@@ -14,6 +14,7 @@ class NewsController
 
     public function actionAll()
     {
+
         $this->view->allNews = NewsArticle::findAll();
         $this->view->display('all');
 
@@ -22,7 +23,7 @@ class NewsController
 
     public function  actionOne()
     {
-        $this->view->oneNews = NewsArticle::findOne($_GET['id']);
+        $this->view->Article = NewsArticle::findOne($_GET['id']);
         $this->view->display('article');
 
     }
