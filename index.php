@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__ . '/autoload.php';
+require __DIR__ . '/autoloadSPL.php';
 
 if (isset($_GET['admin'])) {
     try {
@@ -10,7 +10,7 @@ if (isset($_GET['admin'])) {
         }
 
 
-        if ($_GET['admin'] == 'del' ) {
+        if ($_GET['admin'] == 'del') {
             $News = new AdminController;
             $News->DeleteNews();
         }
@@ -19,11 +19,12 @@ if (isset($_GET['admin'])) {
         require __DIR__ . '/views/403.php';
     }
 } else {
+
+    $ctrl = !empty($_GET['class']) ? $_GET['class'] : 'news';
+    $ctrlClassName ='App\\Controllers\\'. ucfirst($ctrl);
+    $method = !empty($_GET['method']) ? $_GET['method'] : 'all';
+    $methodName = 'Action' . ucfirst($method);
     try {
-        $ctrl = !empty($_GET['class']) ? $_GET['class'] : 'news';
-        $ctrlClassName = ucfirst($ctrl) . 'Controller';
-        $method = !empty($_GET['method']) ? $_GET['method'] : 'all';
-        $methodName = 'Action' . ucfirst($method);
         $controller = new $ctrlClassName;
         $controller->$methodName();
     } catch (E404Exception $e) {
