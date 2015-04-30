@@ -4,6 +4,22 @@
 
 class AdminController
 {
+public $mail,$mailer;
+    public function __construct()
+    {
+        $this->mail = new Nette\Mail\Message;
+        $this->mail->setFrom('Dmitrii <lom1666@gmail.com>');
+        $this->mail->addTo('lom1666@gmail.com');
+        $this->mail->setSubject('otredactirovano uspeshno');
+
+        $this->mailer = new Nette\Mail\SmtpMailer([
+            'host' => 'smtp.gmail.com',
+            'username' => 'lom1666@gmail.com',
+            'password' => '*********',
+            'secure' => 'ssl',
+        ]);
+
+    }
     public function NewsAdd()
     {
         $news = new NewsArticle();
@@ -11,6 +27,8 @@ class AdminController
         $news->text = $_POST['text'];
         $news->uploadImg();
         $news->insert();
+        $this->mail->Setbody('dobavlena novost '.$news->title);
+        $this->mailer->send($this->mail);
         header("Location: /");
     }
 
@@ -34,5 +52,6 @@ class AdminController
         header("Location: /");
 
     }
+
 
 }

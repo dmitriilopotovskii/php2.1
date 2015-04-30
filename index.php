@@ -4,13 +4,13 @@ require __DIR__ . '/autoload.php';
 
 if (isset($_GET['admin'])) {
     try {
-        if ($_GET['admin'] == 'add' & $_SESSION['role'] == 'admin') {
+        if ($_GET['admin'] == 'add') {
             $News = new AdminController;
             $News->NewsAdd();
         }
 
 
-        if ($_GET['admin'] == 'del' & $_SESSION['role'] == 'admin') {
+        if ($_GET['admin'] == 'del' ) {
             $News = new AdminController;
             $News->DeleteNews();
         }

@@ -5,6 +5,7 @@
 class NewsController
 {
     protected $view;
+    protected $smarty;
 
     public function __construct()
     {
@@ -14,8 +15,9 @@ class NewsController
 
     public function actionAll()
     {
-        $this->view->allNews = NewsArticle::findAll();
-        $this->view->display('all');
+
+         $this->view->allNews = NewsArticle::findAll();
+         $this->view->display('all');
     }
 
     public function  actionOne()
@@ -24,7 +26,12 @@ class NewsController
         $this->view->display('article');
 
     }
+    public function actionSmartyALL()
+    {
+        $this->smarty->assign('AllNews', NewsArticle::findAll());
+        $this->smarty->display('index.tpl');
 
+    }
 
 }
 

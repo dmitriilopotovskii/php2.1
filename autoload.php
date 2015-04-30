@@ -1,6 +1,6 @@
 <?php
 
-function __autoload($class)
+function my_autoload($class)
 {
     $paths = [
         __DIR__ . '/classes',
@@ -15,7 +15,8 @@ function __autoload($class)
             return true;
         }
     }
+    return false;
 
-
-     throw new E404Exception('oshibka zagruzki klassa');
 }
+spl_autoload_register('my_autoload');
+require __DIR__.'/vendor/autoload.php';
