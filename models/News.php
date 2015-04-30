@@ -1,8 +1,10 @@
 <?php
 
 //require __DIR__ . '/../classes/Model.php';
+namespace App\models;
 
-class NewsArticle extends Model
+
+class News extends Model
 {
 
 
