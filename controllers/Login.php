@@ -1,11 +1,11 @@
 <?php
 
-
-class LoginController
+namespace App\Controllers;
+class Login
 {
     public function isAdmin()
     {
-        $login = Login::GetLogin();
+        $login = \Login::GetLogin();
         $role = $login->role;
         if ($role == 'admin')
         {   session_start();

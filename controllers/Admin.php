@@ -1,18 +1,18 @@
 <?php
 
-
-class AdminController
+namespace App\Controllers;
+class Admin
 {
     public $mail, $mailer;
 
     public function __construct()
     {
-        $this->mail = new Nette\Mail\Message;
+        $this->mail = new \Nette\Mail\Message;
         $this->mail->setFrom('Dmitrii <lom1666@gmail.com>');
         $this->mail->addTo('lom1666@gmail.com');
         $this->mail->setSubject('otredactirovano uspeshno');
 
-        $this->mailer = new Nette\Mail\SmtpMailer([
+        $this->mailer = new \Nette\Mail\SmtpMailer([
             'host' => 'smtp.gmail.com',
             'username' => 'lom1666@gmail.com',
             'password' => '*********',
