@@ -5,13 +5,13 @@ require __DIR__ . '/autoloadSPL.php';
 if (isset($_GET['admin'])) {
     try {
         if ($_GET['admin'] == 'add') {
-            $News = new AdminController;
+            $News = new App\Controllers\Admin;
             $News->NewsAdd();
         }
 
 
         if ($_GET['admin'] == 'del') {
-            $News = new AdminController;
+            $News = new App\Controllers\Admin;
             $News->DeleteNews();
         }
     } catch (E403Exception $e) {
